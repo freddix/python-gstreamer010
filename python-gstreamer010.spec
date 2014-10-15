@@ -3,7 +3,7 @@
 Summary:	GStreamer Python bindings
 Name:		python-gstreamer010
 Version:	0.10.22
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
@@ -55,9 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %py_postclean
 
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.la
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/gst-*/gst/*.la
-rm -rf $RPM_BUILD_ROOT%{_datadir}/gst-python/0.10/examples
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/gst-python/0.10/examples
+find $RPM_BUILD_ROOT -name "*.la" -exec rm -f {} \;
 
 %clean
 rm -rf $RPM_BUILD_ROOT
